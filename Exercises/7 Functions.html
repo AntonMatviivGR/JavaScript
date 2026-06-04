@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>7 Functions</title>
+  </head>
+  <body>
+    
+
+
+    <script>
+
+      function greet(name) {
+        name ? console.log(`Hello ${name}!`) : console.log(`Hi there!`);
+      };
+      greet(`Roger`);
+      greet(`Simon`);
+      greet();
+      console.log('----------------');
+
+      function convertToFahrenheit(celsius) {
+        return Math.round(((celsius * 9/5) + 32)*100)/100;
+      };
+      console.log(convertToFahrenheit(36.6));
+
+      function convertToCelsius(fahrenheit) {
+        return Math.round(((fahrenheit - 32) * 5/9)*100)/100;
+      };
+      console.log(convertToCelsius(97.88));
+
+      function convertTemperature(degrees, unit) {
+        if (unit == 'C') 
+          return console.log(convertToFahrenheit(degrees) + 'F');
+        else if (unit == 'F') 
+          return console.log(convertToCelsius(degrees) + 'C');
+        else return console.log(`Wrong unit`);
+      };
+      console.log('----------------');
+      convertTemperature(0, 'C');
+      convertTemperature(0, 'F');
+      convertTemperature(0, 'A');
+      
+      function convertLength(length, from, to) {
+         if (from == 'km') {
+          if (to == 'km') return console.log(length + ' ' + to);
+          if (to == 'miles') return console.log(Math.round((length * 6213)/10000) + ' ' + to);
+          if (to == 'ft') return console.log(Math.round((length * 328084)/100) + ' ' + to);
+         }
+
+         if (from == 'miles') {
+          if (to == 'km') return console.log(Math.round((length / 6213)*10000) + ' km');
+          if (to == 'miles') return console.log(length + ' ' + to);
+          if (to == 'ft') return console.log(Math.round((length * 52799999)/10000) + ' ' + to);
+         }
+
+         if (from == 'ft') {
+          if (to == 'km') return console.log((Math.round((length / 328100)*1000).toFixed(2)/10) + ' km');
+          if (to == 'miles') return console.log((Math.round((length / 5280)*100).toFixed(2)/100) + ' ' + to);
+          if (to == 'ft') return console.log(length + ' ' + to);
+         }
+
+         if (from != 'km' || from != 'miles' || from != 'ft') return console.log('Invalid unit: ' + from);
+         if (to != 'km' || to != 'miles' || to != 'ft') return console.log('Invalid unit: ' + to);
+      };
+      console.log('----------------');
+      convertLength(256, 'km', 'km');
+      convertLength(256, 'km', 'miles');
+      convertLength(256, 'km', 'ft');
+      console.log('----------------');
+      convertLength(256, 'miles', 'miles');
+      convertLength(256, 'miles', 'km');
+      convertLength(256, 'miles', 'ft');
+      console.log('----------------');
+      convertLength(25600, 'ft', 'ft');
+      convertLength(25600, 'ft', 'km');
+      convertLength(25600, 'ft', 'miles');
+      console.log('----------------');
+      convertLength(256, 'lbs', 'lbs');
+    
+    </script>
+  </body>
+</html>
