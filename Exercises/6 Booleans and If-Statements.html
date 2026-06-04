@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>6 Booleans and If-Statements</title>
+  </head>
+  <body>
+    
+
+
+    <script>
+
+      const hour = 20;
+      const name = `Roger`;
+      if (hour >= 6 && hour <= 12)
+        console.log(`Good morning ${name}!`);
+      else if (hour >= 13 && hour <= 17)
+        console.log(`Good afternoon ${name}!`);
+      else
+         console.log(`Good night ${name}!`);
+
+      const age = 66;
+      isHoliday = true;
+      (age <= 6 || age >= 65) && isHoliday ? console.log(`Discount`) : console.log(`No discount`);
+
+      const randomNum = Math.random();
+      result = ``;
+      guess = `Heads`;
+      randomNum < 0.5 ? result = `Heads` : result = `Tails`;
+      guess == result ? console.log(`You win!`) : console.log(`You lose!`);
+    
+    </script>
+  </body>
+</html>
