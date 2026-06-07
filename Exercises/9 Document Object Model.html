@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>9 Document Object Model (DOM)</title>
+  </head>
+  <body>
+
+    <button>9a</button>
+    <button class="js-button">9b</button>
+
+    <p>
+      <button onclick="document.querySelector('.result').innerHTML = `You chose: Heads`;">Heads</button>
+      <button onclick="document.querySelector('.result').innerHTML = `You chose: Tails`;">Tails</button>
+      <p class="result"></p>
+    </p>
+
+    <input class="name-input" onkeydown="onKeyDown(event);" placeholder="Name">
+    <button onclick="submit();">Submit</button>
+    <p class="name"></p>
+    
+    <script>
+      console.log(document.querySelector('button'));
+      document.querySelector('.js-button').innerHTML = '9b done!';
+
+      let text = document.querySelector('.name-input');
+
+      function onKeyDown(event) {
+        event.key == 'Enter' ? submit() : null;
+      }
+
+      function submit() {
+        document.querySelector('.name').innerHTML = `Your name is: ${text.value}`;
+      }
+
+
+    </script>
+  </body>
+</html>

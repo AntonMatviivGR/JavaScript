@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>9 Document Object Model (DOM) Challenge</title>
+  </head>
+    <body>
+      <p>Amazon Shipping Calculator</p>
+      <input placeholder="Cost of order" class="cost-input" onkeydown="handleCostKeydown(event);">
+      <button onclick="calculateTotal();">Calculate</button>
+      <p class="total-cost"></p>
+
+      <input class="something-input" onkeyup="onKeyUp(event);" placeholder="Type something">
+      <p class="something-p"></p>
+
+      <p>
+        <button onclick="updateCartQuantity(1);">Add to Cart</button>
+        <button onclick="updateCartQuantity(2);">+2</button>
+        <button onclick="updateCartQuantity(3);">+3</button>
+        <button onclick="updateCartQuantity(4);">+4</button>
+        <button onclick="updateCartQuantity(5);">+5</button>
+      </p>
+      <p>
+        <button onclick="updateCartQuantity(-1);">Remove from Cart</button>
+        <button onclick="updateCartQuantity(-2);">-2</button>
+        <button onclick="updateCartQuantity(-3);">-3</button>
+        <button onclick="updateCartQuantity(-4);">-4</button>
+        <button onclick="updateCartQuantity(-5);">-5</button>
+      </p>
+      <p class="cart-quantity"></p>
+
+      <p class="calculation"></p>
+      <p>
+        <button onclick="updateCalculation('1');">1</button>
+        <button onclick="updateCalculation('2');">2</button>
+        <button onclick="updateCalculation('3');">3</button>
+        <button onclick="updateCalculation(' + ');">+</button>
+      </p>
+      <p>
+        <button onclick="updateCalculation('4');">4</button>
+        <button onclick="updateCalculation('5');">5</button>
+        <button onclick="updateCalculation('6');">6</button>
+        <button onclick="updateCalculation(' - ');">-</button>
+      </p>
+      <p>
+        <button onclick="updateCalculation('7');">7</button>
+        <button onclick="updateCalculation('8');">8</button>
+        <button onclick="updateCalculation('9');">9</button>
+        <button onclick="updateCalculation(' * ');">*</button>
+      </p>
+      <p>
+        <button onclick="updateCalculation('0');">0</button>
+        <button onclick="updateCalculation('.');">.</button>
+        <button onclick="updateCalculation(' = ');">=</button>
+        <button onclick="updateCalculation(' / ');">/</button>
+      </p>
+      <p>
+        <button onclick="document.querySelector('.calculation').innerHTML = ``; calculation = ``;">Clear</button>
+      </p>
+
+    <script>
+      
+      function handleCostKeydown(event) {
+        if (event.key === 'Enter') calculateTotal();
+      }
+
+      function calculateTotal() {
+        const inputElement = document.querySelector('.cost-input');
+        let cost = Number(inputElement.value*100);
+        if (cost < 4000) cost = cost + 1000;
+        document.querySelector('.total-cost').innerHTML = `$${cost/100}`;
+      }
+
+      function onKeyUp(event) {
+        const text = document.querySelector('.something-input');
+        document.querySelector('.something-p').innerHTML = text.value;
+      }
+
+      let cartQuantity = 0;
+      document.querySelector('.cart-quantity').innerHTML = `Cart Quantity: ${cartQuantity}`;
+
+      function updateCartQuantity(amount) {
+        if (cartQuantity + amount > 10) {
+          alert(`The cart is full`);
+          return;
+        }
+        if (cartQuantity + amount < 0) {
+          alert(`Not enough items in the cart`);
+          return;
+        }
+        document.querySelector('.cart-quantity').innerHTML = `Cart Quantity: ${cartQuantity += amount}`;
+      };
+
+      let calculation = localStorage.getItem(`calculation`) || ``;
+
+      function updateCalculation(symbol) {
+        symbol == ' = ' ? 
+          document.querySelector('.calculation').innerHTML = `${calculation} = ${eval(calculation)}`
+        : document.querySelector('.calculation').innerHTML = calculation += symbol;
+        localStorage.setItem(`calculation`, calculation);
+      };
+      
+    </script>
+  </body>
+</html>
