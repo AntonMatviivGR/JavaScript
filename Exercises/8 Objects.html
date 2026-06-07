@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>8 Objects</title>
+  </head>
+  <body>
+    
+    <p>
+      <button onclick="updateCalculation('1');">1</button>
+      <button onclick="updateCalculation('2');">2</button>
+      <button onclick="updateCalculation('3');">3</button>
+      <button onclick="updateCalculation(' + ');">+</button>
+    </p>
+    <p>
+      <button onclick="updateCalculation('4');">4</button>
+      <button onclick="updateCalculation('5');">5</button>
+      <button onclick="updateCalculation('6');">6</button>
+      <button onclick="updateCalculation(' - ');">-</button>
+    </p>
+    <p>
+      <button onclick="updateCalculation('7');">7</button>
+      <button onclick="updateCalculation('8');">8</button>
+      <button onclick="updateCalculation('9');">9</button>
+      <button onclick="updateCalculation(' * ');">*</button>
+    </p>
+    <p>
+      <button onclick="updateCalculation('0');">0</button>
+      <button onclick="updateCalculation('.');">.</button>
+      <button onclick="updateCalculation(' = ');">=</button>
+      <button onclick="updateCalculation(' / ');">/</button>
+    </p>
+    <p>
+      <button onclick="calculation = ``;">Clear</button>
+    </p>
+
+    <script>
+
+      let calculation = localStorage.getItem(`calculation`) || ``;
+
+      function updateCalculation(symbol) {
+        symbol == ' = ' ? 
+          console.log(`${calculation} = ${eval(calculation)}`) 
+        : console.log(calculation += symbol);
+        localStorage.setItem(`calculation`, calculation);
+      };
+
+      const amazonProduct1 = {
+        name: 'basketball',
+        priceCents: 2095
+      };
+      const amazonProduct2 = {
+        name: 'T-Shirt',
+        priceCents: 799
+      };
+      amazonProduct1.priceCents += 500;
+      amazonProduct1['delivery-time'] = '3 days';
+      console.log(amazonProduct1);
+
+      function comparePrice(product1, product2) {
+        if (product1.priceCents < product2.priceCents) return product1;
+        else return product2;
+      };
+      console.log(comparePrice(amazonProduct1, amazonProduct2));
+
+      function isSameProduct(p1, p2) {
+        if (p1.name == p2.name && p1.priceCents == p2.priceCents) return true;
+        else return false;
+      };
+      console.log(isSameProduct(amazonProduct1, amazonProduct2));
+
+      console.log('Good Morning'.toLowerCase());
+      console.log('test'.repeat(8));
+
+    </script>
+  </body>
+</html>

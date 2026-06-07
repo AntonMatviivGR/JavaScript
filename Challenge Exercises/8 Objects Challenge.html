@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>8 Objects Challenge</title>
+  </head>
+  <body>
+
+    <button onclick="playGame(`Heads`);">Heads</button>
+    <button onclick="playGame(`Tails`);">Tails</button>
+
+    <script>
+
+      let score = JSON.parse(localStorage.getItem('score')) || { wins: 0, losses: 0 };
+
+      function playGame(guess) {
+        const randomNum = Math.random();
+        let computerMove = ``;
+        let result;
+        randomNum < 0.5 ? computerMove = `Heads` : computerMove = `Tails`;
+        if (guess == computerMove) {
+          result = 'You win!';
+          score.wins++;
+        }
+        else {
+          result = 'You lose!';
+          score.losses++;
+        }
+        localStorage.setItem('score', JSON.stringify(score));
+        console.log(result, score);
+      };
+    </script>
+  </body>
+</html>
