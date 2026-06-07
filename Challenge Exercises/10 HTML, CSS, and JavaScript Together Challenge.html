@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>10 HTML, CSS, and JavaScript Together Challenge</title>
+    <style>
+      button {
+        cursor: pointer;
+      }
+
+      .toggle-button {
+        background-color: rgb(225, 225, 225);
+        border: none;
+        border-radius: 4px;
+        padding: 8px;
+      }
+
+      .is-toggled {
+        color: rgb(250, 250, 250);
+        background-color: rgb(25, 25, 25);
+        border: none;
+        border-radius: 4px;
+        padding: 8px;
+      }
+
+      body {
+        font-family: Arial;
+      }
+
+      .cost-input {
+        font-size: 15px;
+        padding: 10px;
+      }
+
+      .calculate-button {
+        background-color: green;
+        color: white;
+        border: none;
+        font-size: 15px;
+        padding: 12px 15px;
+        cursor: pointer;
+      }
+
+      .error {
+        color: rgb(200, 75, 75);
+      }
+    </style>
+  </head>
+    <body>
+      <p>
+        <button class="toggle-button button1" onclick="toggleButton('.button1');">Gaming</button>
+        <button class="toggle-button button2" onclick="toggleButton(`.button2`);">Music</button>
+        <button class="toggle-button button3" onclick="toggleButton(`.button3`);">Tech</button>
+      </p>
+
+      <p>Amazon Shipping Calculator</p>
+      <input placeholder="Cost of order" class="cost-input cost-input" onkeydown="handleCostKeydown(event);">
+      <button onclick="calculateTotal();" class="calculate-button">Calculate</button>
+      <p class="total-cost"></p>
+    
+    <script>
+      function toggleButton(selector) {
+        const button = document.querySelector(selector);
+        if (!button.classList.contains('is-toggled')) {
+          turnOffPreviousButton();
+          button.classList.add('is-toggled');
+        } else {
+          button.classList.remove('is-toggled');
+        }
+      }
+
+      function turnOffPreviousButton() {
+        const previousButton = document.querySelector('.is-toggled');
+        if (previousButton) {
+          previousButton.classList.remove('is-toggled');
+        }
+      }
+
+      function handleCostKeydown(event) {
+        if (event.key === 'Enter') {
+          calculateTotal();
+        }
+      }
+
+      function calculateTotal() {
+        const inputElement = document.querySelector('.cost-input');
+        let cost = Number(inputElement.value*100);
+        if (inputElement.value < 0) {
+          document.querySelector('.total-cost').innerHTML = `Error: cost cannot be less than $0`;
+          document.querySelector('.total-cost').classList.add('error');
+        }
+        else {
+          if (cost < 4000) cost = cost + 1000;
+          document.querySelector('.total-cost').innerHTML = `$${cost/100}`;
+          document.querySelector('.total-cost').classList.remove('error');
+        }
+      }
+    </script>
+  </body>
+</html>

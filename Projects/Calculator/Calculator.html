@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Calculator.css">
+  </head>
+    <body>
+      
+      <p class="calculation"></p>
+      <p>
+        <button onclick="updateCalculation('1');">1</button>
+        <button onclick="updateCalculation('2');">2</button>
+        <button onclick="updateCalculation('3');">3</button>
+        <button class="sign" onclick="updateCalculation(' + ');">+</button>
+      </p>
+      <p>
+        <button onclick="updateCalculation('4');">4</button>
+        <button onclick="updateCalculation('5');">5</button>
+        <button onclick="updateCalculation('6');">6</button>
+        <button class="sign" onclick="updateCalculation(' - ');">-</button>
+      </p>
+      <p>
+        <button onclick="updateCalculation('7');">7</button>
+        <button onclick="updateCalculation('8');">8</button>
+        <button onclick="updateCalculation('9');">9</button>
+        <button class="sign" onclick="updateCalculation(' * ');">*</button>
+      </p>
+      <p>
+        <button onclick="updateCalculation('0');">0</button>
+        <button onclick="updateCalculation('.');">.</button>
+        <button onclick="updateCalculation(' = ');">=</button>
+        <button class="sign" onclick="updateCalculation(' / ');">/</button>
+      </p>
+      <p>
+        <button class="clear" onclick="document.querySelector('.calculation').innerHTML = ``; calculation = ``;">Clear</button>
+      </p>
+
+    <script src="Calculator.js"></script>
+  </body>
+</html>
