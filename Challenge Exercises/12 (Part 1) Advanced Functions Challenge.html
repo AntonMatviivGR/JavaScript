@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>12 Advanced Functions Challenge</title>
+    <style>
+
+    </style>
+  </head>
+  <body>
+
+    <p>
+      <button class="add-to-cart" onclick="addToCart();">Add to cart</button>
+      <p class="cart"></p>
+    </p>
+    <p>
+      <button onclick="messages++; display();">Add</button>
+      <button onclick="messages > 0 ? messages-- : messages === 0 ? stopDisplay() : null;">Remove</button>
+    </p>
+
+    <script>
+
+      let timeoutID;
+      function addToCart() {
+        const cart = document.querySelector('.cart');
+        cart.innerHTML = 'Added';
+
+        clearTimeout(timeoutID);
+
+        timeoutID = setInterval(() => {
+          cart.innerHTML = '';
+        }, 2000);
+      }
+
+      let messages = 2;
+      let intervalId;
+      let isDisplaying;
+      display();
+
+      function display() {
+        if (isDisplaying) {
+          return;
+        }
+        isDisplaying = true;
+        intervalId = setInterval(() => {
+          if (document.title === '12 Advanced Functions') {
+            document.title = `(${messages}) New messages`;
+          } else {
+            document.title = '12 Advanced Functions';
+          }
+        }, 1000);
+      }
+
+      function stopDisplay() {
+        isDisplaying = false;
+        clearInterval(intervalId);
+        document.title = '12 Advanced Functions';
+      }
+    </script>
+  </body>
+</html>

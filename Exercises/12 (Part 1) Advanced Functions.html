@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>12 Advanced Functions</title>
+    <style>
+
+    </style>
+  </head>
+  <body>
+
+    <button class="start" onclick="finish();">Start</button>
+    <p>
+      <button class="add-to-cart" onclick="addToCart();">Add to cart</button>
+      <p class="cart"></p>
+    </p>
+
+    <script>
+      let add = () => console.log(2 + 3);
+      add();
+      add();
+
+      function runTwice(fun) {
+        fun();
+        fun();
+      }
+      runTwice(() => console.log('12b'));
+      runTwice(add);
+
+      function finish() {
+        const button = document.querySelector('.start');
+        button.innerHTML = 'Loading...';
+        setInterval(() => {
+          button.innerHTML = 'Finished!';
+        }, 1000);
+      }
+
+      function addToCart() {
+        const cart = document.querySelector('.cart');
+        cart.innerHTML = 'Added';
+        timeoutID = setInterval(() => {
+          cart.innerHTML = '';
+        }, 2000);
+      }
+    </script>
+  </body>
+</html>
