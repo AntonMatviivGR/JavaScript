@@ -671,7 +671,7 @@ export const products = [
     ]
   },
   {
-    id: "ac3887a9-6313-003b-e7ef-97adf034d975",
+    id: "ac6774a9-4247-003b-e7ef-97adf034d975",
     image: "images/products/umbrella.jpg",
     name: "Dark Grey Umbrella",
     rating: {
