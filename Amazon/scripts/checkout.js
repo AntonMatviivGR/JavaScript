@@ -40,7 +40,8 @@ cart.forEach((cartItem) => {
                 data-product-id="${matchingProduct.id}">
             Update
           </span>
-          <input class="quantity-input js-quantity-input-${matchingProduct.id}">
+          <input class="quantity-input js-quantity-input-${matchingProduct.id}"
+                 data-product-id="${matchingProduct.id}">
           <span class="save-quantity-link link-primary"
                 data-product-id="${matchingProduct.id}">Save</span>
           <span class="delete-quantity-link link-primary js-delete-link"
@@ -125,11 +126,30 @@ document.querySelectorAll('.save-quantity-link').forEach((link) => {
   link.addEventListener('click', () => {
     const {productId} = link.dataset;
     document.querySelector(`.js-cart-item-container-${productId}`).classList.remove("is-editing-quantity");
-    const quantityInput = document.querySelector(`.js-quantity-input-${productId}`);
-    const newQuantity = Number(quantityInput.value);
-    updateQuantity(productId, newQuantity);
-    const quantityLabel = document.querySelector(`.js-quantity-label-${productId}`);
-    quantityLabel.innerHTML = newQuantity;
-    updateCartQuantity();
+    quantityInput(productId);
   });
 });
+
+document.querySelectorAll('.quantity-input').forEach((link) => {
+  link.addEventListener('keydown', (event) => {
+    const {productId} = link.dataset;
+    if (event.key === 'Enter') {
+      quantityInput(productId);
+      document.querySelector(`.js-cart-item-container-${productId}`).classList.remove("is-editing-quantity");
+    }
+  });
+});
+
+function quantityInput(productId) {
+  let quantityInput = document.querySelector(`.js-quantity-input-${productId}`);
+  const newQuantity = Number(quantityInput.value);
+  if (newQuantity <= 0 || newQuantity >= 1000) {
+    alert('The quantity must be more than 0 and less than 1000');
+    return;
+  }
+  updateQuantity(productId, newQuantity);
+  
+  const quantityLabel = document.querySelector(`.js-quantity-label-${productId}`);
+  quantityLabel.innerHTML = newQuantity;
+  updateCartQuantity();
+}
