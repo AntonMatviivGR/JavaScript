@@ -1,6 +1,9 @@
 import {cart, addToCart, calculateCartQuantity} from '../data/cart.js';
 import {products} from '../data/products.js';
 import {formatCurrency} from './utils/money.js';
+import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
+import {dateExperiment} from './utils/Ex15.js';
+import isSatSun from './utils/Ex15.js';
 
 let productsHTML = '';
 
@@ -81,3 +84,18 @@ document.querySelectorAll('.js-add-to-cart').forEach((button) => {
     }, 2000);
   });
 });
+
+dateExperiment();
+
+let date = dayjs();
+console.log(date.format('dddd, MMMM D'));
+console.log(isSatSun(date));
+date = dayjs().add(2, 'day');
+console.log(date.format('dddd, MMMM D'));
+console.log(isSatSun(date));
+date = dayjs().add(4, 'day');
+console.log(date.format('dddd, MMMM D'));
+console.log(isSatSun(date));
+date = dayjs().add(6, 'day');
+console.log(date.format('dddd, MMMM D'));
+console.log(isSatSun(date));
