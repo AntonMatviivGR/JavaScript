@@ -11,7 +11,7 @@ import {deliveryOptions, getDeliveryOption, calculateDeliveryDate} from '../../d
 import {renderPaymentSummary} from './paymentSummary.js';
 import {renderCheckoutHeader} from './checkoutHeader.js';
 
-export function renderOrderSumary() {
+export function renderOrderSummary() {
 
   let cartSummaryHTML = '';
 
@@ -23,7 +23,9 @@ export function renderOrderSumary() {
     const dateString = calculateDeliveryDate(deliveryOption);
 
     cartSummaryHTML += `
-    <div class="cart-item-container js-cart-item-container-${matchingProduct.id}">
+    <div class="cart-item-container
+                js-cart-item-container
+                js-cart-item-container-${matchingProduct.id}">
       <div class="delivery-date">
         Delivery date: ${dateString}
       </div>
@@ -101,7 +103,7 @@ export function renderOrderSumary() {
       removeFromCart(productId);
       renderCheckoutHeader();
       updateCartQuantity();
-      renderOrderSumary();
+      renderOrderSummary();
       renderPaymentSummary();
     });
   });
@@ -146,7 +148,7 @@ export function renderOrderSumary() {
     }
     updateQuantity(productId, newQuantity);
     updateCartQuantity();
-    renderOrderSumary();
+    renderOrderSummary();
     renderPaymentSummary();
   }
 
@@ -154,7 +156,7 @@ export function renderOrderSumary() {
     element.addEventListener('click', () => {
       const {productId, deliveryOptionId} = element.dataset;
       updateDeliveryOption(productId, deliveryOptionId);
-      renderOrderSumary();
+      renderOrderSummary();
       renderPaymentSummary();
     });
   });
