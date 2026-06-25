@@ -25,17 +25,9 @@ class Product {
     this.priceCents = productDetails.priceCents;
   }
 
-  getStarsUrl() {
-    return `images/ratings/rating-${this.rating.stars * 10}.png`;
-  }
-
-  getPrice() {
-    return `$${formatCurrency(this.priceCents)}`;
-  }
-
-  extraInfoHTML() {
-    return ``;
-  }
+  getStarsUrl() { return `images/ratings/rating-${this.rating.stars * 10}.png`; }
+  getPrice() { return `$${formatCurrency(this.priceCents)}`; }
+  extraInfoHTML() { return ``; }
 }
 
 class Clothing extends Product {
@@ -70,6 +62,7 @@ export function loadProductsFetch() {
 
   return promise;
 }
+
 /*
 loadProductsFetch().then(() => {
   console.log('next step');
